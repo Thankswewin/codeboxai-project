@@ -1,0 +1,3458 @@
+<!DOCTYPE html>
+<html lang="en" style="background-color: #121212;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./5195c56804c81d6a0be0f674b9094e5b9073268431b8d64db268e57922edac6c.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>CodeBox AI - All in One</title>
+    <style>
+        /* Theme Variables */
+        :root {
+            /* Light Theme (Default) */
+            --bg-color: #f8f9fa;
+            --text-color: #333;
+            --secondary-text-color: #666;
+            --primary-color: #007acc;
+            --primary-hover-color: #005fa3;
+            --card-bg-color: white;
+            --border-color: #eee;
+            --footer-bg-color: #f1f1f1;
+            --footer-text-color: #666;
+            --header-border-color: #eee;
+            --pricing-card-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            --hero-bg-gradient: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            /* Premium Variables */
+            --premium-gradient: linear-gradient(90deg, #007acc, #6b46c1, #d53f8c);
+            --premium-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            --premium-card-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+            --premium-hover-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+            --premium-text-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+            --premium-border-radius: 16px;
+            --premium-transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            /* IDE Variables */
+            --ide-bg-color: #1e1e2e;
+            --ide-text-color: #f5f5f7;
+            --ide-secondary-text: #a0a0a7;
+            --ide-border-color: #3f3f4f;
+            --ide-primary-color: #4a6ee0;
+            --ide-secondary-color: #6c5ce7;
+            --ide-accent-color: #00cec9;
+            --ide-success-color: #00b894;
+            --ide-warning-color: #fdcb6e;
+            --ide-error-color: #e17055;
+            --ide-info-color: #0984e3;
+            --ide-spacing-xs: 4px;
+            --ide-spacing-sm: 8px;
+            --ide-spacing-md: 16px;
+            --ide-spacing-lg: 24px;
+            --ide-spacing-xl: 32px;
+            --ide-font-mono: 'Fira Code', 'JetBrains Mono', 'Consolas', 'Monaco', 'Courier New', monospace;
+            --ide-font-sans: 'Inter', 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+            --ide-shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+            --ide-shadow-md: 0 4px 8px rgba(0, 0, 0, 0.12);
+            --ide-shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.15);
+            --ide-transition-fast: 0.15s ease;
+            --ide-transition-normal: 0.25s ease;
+            --ide-transition-slow: 0.4s ease;
+        }
+
+        /* Dark Theme */
+        [data-theme="dark"] {
+            --bg-color: #1e1e1e;
+            --text-color: #f0f0f0;
+            --secondary-text-color: #aaa;
+            --primary-color: #0098ff;
+            --primary-hover-color: #00b7ff;
+            --card-bg-color: #252526;
+            --border-color: #333;
+            --footer-bg-color: #252526;
+            --footer-text-color: #aaa;
+            --header-border-color: #333;
+            --pricing-card-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            --hero-bg-gradient: linear-gradient(135deg, #1e1e1e 0%, #252526 100%);
+        }
+
+        /* Common Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #121212;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Landing Page Styles */
+        .landing-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .landing-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 1px solid var(--header-border-color);
+            max-width: 100%;
+            overflow-x: auto;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .landing-nav ul {
+            display: flex;
+            align-items: center;
+            flex-wrap: nowrap;
+            gap: 10px;
+        }
+
+        .landing-nav li {
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+        }
+
+        .landing-nav a {
+            color: var(--text-color);
+            font-weight: 500;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover-color);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            display: inline-block;
+            background-color: transparent;
+            color: var(--primary-color);
+            padding: 10px 20px;
+            border: 1px solid var(--primary-color);
+            border-radius: 25px;
+            font-weight: 600;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(0, 122, 204, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Theme Toggle Button */
+        .theme-toggle {
+            display: flex;
+            align-items: center;
+            margin-left: 15px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 16px;
+        }
+
+        .theme-toggle svg {
+            width: 20px;
+            height: 20px;
+            margin-right: 5px;
+            fill: var(--text-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            align-items: center;
+            padding: 80px 0;
+        }
+
+        .hero-content {
+            flex: 1;
+            padding-right: 40px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: var(--text-color);
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            color: var(--secondary-text-color);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        /* Feature Sections */
+        .features, .pricing, .about {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .features h2, .pricing h2, .about h2 {
+            font-size: 36px;
+            margin-bottom: 50px;
+            color: var(--text-color);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background-color: var(--card-bg-color);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: var(--pricing-card-shadow);
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-card h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        /* Footer */
+        .landing-footer {
+            background: linear-gradient(180deg, #13141c 0%, #191a27 100%);
+            border-top: 1px solid rgba(73, 80, 198, 0.15);
+            padding: 70px 0 40px;
+            margin-top: 100px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* CodeBox Improved Styles */
+        .codebox-section {
+            background-color: var(--ide-bg-color);
+            color: var(--ide-text-color);
+            padding: 0;
+            min-height: 100vh;
+            display: none; /* Initially hidden, will be shown via JS when navigating to it */
+        }
+        
+        .codebox-container {
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+        
+        .app-container {
+            display: flex;
+            height: 100vh;
+            width: 100%;
+            overflow: hidden;
+        }
+        
+        /* Sidebar Styles */
+        .sidebar {
+            width: 300px;
+            height: 100%;
+            background-color: #1a1a1a;
+            border-right: 1px solid #333;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        
+        .sidebar-header {
+            padding: 15px;
+            border-bottom: 1px solid #333;
+        }
+        
+        .new-chat-btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #4a6ee0;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            transition: background-color 0.3s;
+        }
+        
+        .new-chat-btn:hover {
+            background-color: #3a5bc9;
+        }
+        
+        .sidebar-tabs {
+            display: flex;
+            border-bottom: 1px solid #333;
+        }
+        
+        .tab-btn {
+            flex: 1;
+            padding: 10px;
+            background: none;
+            border: none;
+            color: #aaa;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .tab-btn.active {
+            color: white;
+            border-bottom: 2px solid #4a6ee0;
+        }
+        
+        .chat-history {
+            flex: 1;
+            overflow-y: auto;
+            padding: 15px;
+        }
+        
+        .history-header {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .search-box {
+            position: relative;
+        }
+        
+        .chat-search {
+            width: 100%;
+            padding: 8px 30px 8px 10px;
+            background-color: #252525;
+            border: 1px solid #333;
+            color: white;
+            border-radius: 4px;
+        }
+        
+        .search-icon {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #aaa;
+        }
+        
+        .chat-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .chat-item {
+            padding: 10px;
+            border-radius: 4px;
+            background-color: #252525;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s;
+        }
+        
+        .chat-item.active {
+            background-color: #303030;
+            border-left: 2px solid #4a6ee0;
+        }
+        
+        .chat-item:hover {
+            background-color: #303030;
+        }
+        
+        .chat-item-content {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex: 1;
+        }
+        
+        .chat-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            background-color: #333;
+            border-radius: 50%;
+            color: #ddd;
+        }
+        
+        .chat-details {
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        
+        .chat-title {
+            font-weight: 500;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .chat-time {
+            font-size: 12px;
+            color: #aaa;
+        }
+        
+        .chat-actions {
+            display: flex;
+            gap: 5px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .chat-item:hover .chat-actions {
+            opacity: 1;
+        }
+        
+        .pin-btn, .delete-btn {
+            background: none;
+            border: none;
+            color: #aaa;
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 3px;
+            transition: all 0.3s;
+        }
+        
+        .pin-btn:hover, .delete-btn:hover {
+            background-color: #404040;
+            color: white;
+        }
+        
+        .user-profile {
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-top: 1px solid #333;
+        }
+        
+        .profile-pic {
+            width: 30px;
+            height: 30px;
+            background-color: #333;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ddd;
+        }
+        
+        .profile-info {
+            flex: 1;
+        }
+        
+        .profile-name {
+            font-weight: 500;
+        }
+        
+        .profile-status {
+            font-size: 12px;
+            color: #aaa;
+        }
+        
+        .profile-menu {
+            cursor: pointer;
+            color: #aaa;
+            padding: 5px;
+            transition: color 0.3s;
+        }
+        
+        .profile-menu:hover {
+            color: white;
+        }
+        
+        /* Main Content Area */
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        .chat-container {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            position: relative;
+        }
+        
+        .welcome-section {
+            padding: 40px;
+            text-align: center;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .welcome-header {
+            margin-bottom: 40px;
+        }
+        
+        .welcome-header h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+            background: var(--premium-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .welcome-header h2 {
+            font-size: 18px;
+            color: #aaa;
+            font-weight: normal;
+        }
+        
+        .prompt-suggestions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            width: 100%;
+            max-width: 800px;
+        }
+        
+        .prompt-card {
+            background-color: #252525;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: left;
+        }
+        
+        .prompt-card:hover {
+            background-color: #303030;
+            transform: translateY(-2px);
+        }
+        
+        .prompt-icon {
+            width: 40px;
+            height: 40px;
+            background-color: #333;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: #4a6ee0;
+        }
+        
+        .prompt-content h3 {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+        
+        .prompt-content p {
+            font-size: 13px;
+            color: #aaa;
+            margin: 0;
+        }
+        
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+            display: none; /* Initially hidden, shown when a chat starts */
+        }
+        
+        .message {
+            display: flex;
+            margin-bottom: 20px;
+            animation: fadeIn 0.3s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        .message.user .avatar {
+            background-color: #4a6ee0;
+        }
+        
+        .message.assistant .avatar {
+            background: var(--premium-gradient);
+        }
+        
+        .message-content {
+            flex: 1;
+            background-color: #252525;
+            padding: 15px;
+            border-radius: 8px;
+            color: #f0f0f0;
+            position: relative;
+        }
+        
+        .message.user .message-content {
+            background-color: #2c3a61;
+        }
+        
+        .message-timestamp {
+            font-size: 12px;
+            color: #aaa;
+            margin-top: 5px;
+            text-align: right;
+        }
+        
+        /* Thinking animation */
+        .thinking {
+            display: flex;
+            gap: 5px;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+        }
+        
+        .thinking span {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background-color: #4a6ee0;
+            border-radius: 50%;
+            animation: thinking 1.4s infinite ease-in-out both;
+        }
+        
+        .thinking span:nth-child(1) {
+            animation-delay: -0.32s;
+        }
+        
+        .thinking span:nth-child(2) {
+            animation-delay: -0.16s;
+        }
+        
+        @keyframes thinking {
+            0%, 80%, 100% { transform: scale(0); }
+            40% { transform: scale(1); }
+        }
+        
+        /* AI Model Selector */
+        .ai-model-selector {
+            padding: 10px;
+            background-color: #1a1a1a;
+            border-top: 1px solid #333;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .ai-model-selector label {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: #aaa;
+            font-size: 14px;
+        }
+        
+        .ai-model-selector select {
+            flex: 1;
+            padding: 8px;
+            background-color: #252525;
+            border: 1px solid #333;
+            color: white;
+            border-radius: 4px;
+        }
+        
+        .premium-model {
+            color: gold;
+        }
+        
+        /* Input Area */
+        .input-container {
+            padding: 20px;
+            border-top: 1px solid #333;
+        }
+        
+        .input-box {
+            display: flex;
+            background-color: #252525;
+            border: 1px solid #333;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .input-box textarea {
+            flex: 1;
+            min-height: 60px;
+            max-height: 200px;
+            padding: 15px;
+            background: none;
+            border: none;
+            color: white;
+            resize: none;
+            font-family: inherit;
+            font-size: 14px;
+            outline: none;
+        }
+        
+        .input-actions {
+            display: flex;
+            align-items: flex-end;
+            padding: 10px;
+        }
+        
+        .attach-btn, .send-btn {
+            background: none;
+            border: none;
+            color: #aaa;
+            padding: 8px;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        
+        .attach-btn:hover, .send-btn:hover {
+            color: white;
+        }
+        
+        .send-btn {
+            color: #4a6ee0;
+        }
+        
+        .send-btn:hover {
+            color: #6b8aff;
+        }
+        
+        .disclaimer {
+            font-size: 12px;
+            color: #aaa;
+            margin-top: 10px;
+            text-align: center;
+        }
+        
+        .disclaimer a {
+            color: #4a6ee0;
+            text-decoration: none;
+        }
+        
+        .disclaimer a:hover {
+            text-decoration: underline;
+        }
+        
+        .back-home-btn {
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 12px;
+            margin-top: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+        
+        .back-home-btn:hover {
+            background-color: #444;
+        }
+        
+        /* Responsive Styles for CodeBox */
+        @media (max-width: 768px) {
+            .sidebar {
+                position: fixed;
+                left: -300px;
+                top: 0;
+                bottom: 0;
+                z-index: 100;
+                transition: left 0.3s ease;
+            }
+            
+            .sidebar.active {
+                left: 0;
+            }
+            
+            .prompt-suggestions {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Make code blocks look better */
+        .message-content pre {
+            background-color: #1a1a1a;
+            padding: 15px;
+            border-radius: 4px;
+            overflow-x: auto;
+            margin: 10px 0;
+        }
+        
+        .message-content code {
+            font-family: 'Fira Code', 'JetBrains Mono', 'Consolas', monospace;
+            background-color: #1a1a1a;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+
+        /* Premium Body and Container Styles */
+        html, body {
+            background-image: radial-gradient(circle at 10% 20%, rgba(0, 122, 204, 0.1) 0%, rgba(107, 70, 193, 0.05) 90%);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            width: 100%;
+        }
+
+        body.premium {
+            background-image: radial-gradient(circle at 10% 20%, rgba(0, 122, 204, 0.1) 0%, rgba(107, 70, 193, 0.05) 90%);
+            color: var(--text-color);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Premium Header Styles */
+        .premium-header {
+            padding: 25px 0;
+            border-bottom: none;
+            box-shadow: var(--premium-shadow);
+            background-color: #121212;
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            transition: var(--premium-transition);
+        }
+
+        [data-theme="dark"] .premium-header {
+            background-color: #121212;
+        }
+
+        [data-theme="dark"] .premium-feature-card {
+            background: rgba(25, 25, 25, 0.8);
+            border: 1px solid rgba(50, 50, 50, 0.3);
+        }
+
+        [data-theme="dark"] .premium-feature-card:hover {
+            border: 1px solid rgba(70, 70, 70, 0.4);
+            background: rgba(30, 30, 30, 0.9);
+        }
+
+        /* Premium Logo */
+        .premium-logo {
+            display: flex;
+            align-items: center;
+            font-size: 28px;
+            font-weight: 700;
+            background: var(--premium-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: var(--premium-text-shadow);
+            position: relative;
+            background-size: 200% 200%;
+            animation: gradientShift 8s ease infinite;
+        }
+
+        .premium-logo i {
+            margin-right: 8px;
+            font-size: 28px;
+        }
+
+        /* Premium Button Styles */
+        .btn-premium {
+            display: inline-block;
+            background: var(--premium-gradient);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: var(--premium-transition);
+            box-shadow: var(--premium-shadow);
+            border: none;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-size: 14px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-premium:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--premium-hover-shadow);
+        }
+
+        .btn-premium::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 5px;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.5);
+            opacity: 0;
+            border-radius: 100%;
+            transform: scale(1, 1) translate(-50%, -50%);
+            transform-origin: 50% 50%;
+        }
+
+        .btn-premium:hover::after {
+            animation: ripple 1s ease-out;
+        }
+
+        .btn-premium-secondary {
+            display: inline-block;
+            background: transparent;
+            color: var(--text-color);
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: var(--premium-transition);
+            border: 1px solid transparent;
+            background-image: linear-gradient(var(--bg-color), var(--bg-color)), var(--premium-gradient);
+            background-origin: border-box;
+            background-clip: padding-box, border-box;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-size: 14px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-premium-secondary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--premium-shadow);
+        }
+
+        .btn-premium-secondary::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 5px;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.5);
+            opacity: 0;
+            border-radius: 100%;
+            transform: scale(1, 1) translate(-50%, -50%);
+            transform-origin: 50% 50%;
+        }
+
+        .btn-premium-secondary:hover::after {
+            animation: ripple 1s ease-out;
+        }
+
+        /* Premium Hero Section */
+        .premium-hero {
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+            background-color: #121212;
+        }
+
+        .premium-hero h1 {
+            font-size: 56px;
+            margin-bottom: 25px;
+            background: var(--premium-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.2;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            background-size: 200% auto;
+            animation: gradientShift 8s ease infinite;
+        }
+
+        .premium-hero p {
+            font-size: 20px;
+            margin-bottom: 35px;
+            line-height: 1.6;
+            max-width: 600px;
+        }
+
+        /* Premium Feature Section */
+        .premium-section {
+            padding: 100px 0;
+            position: relative;
+            background-image: radial-gradient(circle at 50% 50%, rgba(0, 122, 204, 0.03) 0%, rgba(107, 70, 193, 0.02) 50%, transparent 100%);
+            overflow: hidden;
+        }
+
+        .premium-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(0, 122, 204, 0.02) 0%, rgba(107, 70, 193, 0.01) 50%, transparent 100%);
+            opacity: 0.5;
+            z-index: -1;
+            animation: pulse 15s infinite alternate ease-in-out;
+        }
+
+        .premium-section h2 {
+            font-size: 42px;
+            margin-bottom: 60px;
+            background: var(--premium-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+            background-size: 200% auto;
+            animation: gradientShift 8s ease infinite;
+        }
+
+        /* Premium Feature Card */
+        .premium-feature-card {
+            padding: 40px;
+            border-radius: var(--premium-border-radius);
+            background: rgba(25, 25, 25, 0.8);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(50, 50, 50, 0.3);
+            transition: var(--premium-transition);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            background-color: var(--card-bg-color);
+        }
+
+        .premium-feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--premium-gradient);
+            opacity: 0;
+            z-index: -1;
+            transition: opacity 0.5s ease;
+        }
+
+        .premium-feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .premium-feature-card:hover::before {
+            opacity: 0.05;
+        }
+
+        .premium-feature-card h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .premium-feature-card h3 i {
+            font-size: 20px;
+            background: var(--premium-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .premium-feature-card p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        /* Pricing Cards */
+        .pricing-cards {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .pricing-card {
+            background-color: var(--card-bg-color);
+            padding: 40px 30px;
+            border-radius: 8px;
+            box-shadow: var(--pricing-card-shadow);
+            flex: 1;
+            min-width: 250px;
+            max-width: 350px;
+            transition: transform 0.3s;
+        }
+
+        .pricing-card.premium-feature-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .pricing-card.premium-feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--premium-hover-shadow);
+        }
+
+        .pricing-card.premium-feature-card.featured {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-card.premium-feature-card.featured::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--premium-gradient);
+        }
+
+        /* Animations */
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.5; }
+            100% { transform: scale(1.5); opacity: 0.2; }
+        }
+
+        @keyframes ripple {
+            0% {
+                transform: scale(0, 0);
+                opacity: 0.5;
+            }
+            100% {
+                transform: scale(20, 20);
+                opacity: 0;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .landing-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+            }
+
+            .landing-nav ul {
+                flex-wrap: wrap;
+            }
+
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                gap: 40px;
+            }
+
+            .hero-content {
+                padding-right: 0;
+            }
+
+            .premium-hero h1 {
+                font-size: 36px;
+            }
+            
+            .premium-hero p {
+                font-size: 16px;
+            }
+            
+            .feature-highlight {
+                flex-direction: column;
+            }
+            
+            .premium-feature-card {
+                padding: 20px;
+            }
+        }
+
+        /* Login Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            background-color: var(--card-bg-color);
+            border-radius: var(--premium-border-radius);
+            padding: 30px;
+            width: 100%;
+            max-width: 450px;
+            box-shadow: var(--premium-shadow);
+            position: relative;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--secondary-text-color);
+        }
+        
+        .login-container h2 {
+            margin-bottom: 25px;
+            text-align: center;
+            color: var(--text-color);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-color);
+            font-weight: 500;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-size: 16px;
+        }
+        
+        .remember-forgot {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .remember-forgot input[type="checkbox"] {
+            width: auto;
+            margin-right: 5px;
+        }
+        
+        .forgot-password {
+            color: var(--primary-color);
+            font-size: 14px;
+        }
+        
+        .login-btn {
+            width: 100%;
+            padding: 12px;
+            margin-top: 10px;
+            font-size: 16px;
+        }
+        
+        .login-footer {
+            text-align: center;
+            margin-top: 20px;
+            color: var(--secondary-text-color);
+        }
+        
+        .login-footer a {
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+        /* Payment Modal Styles */
+        .payment-modal-content {
+            max-width: 700px;
+            width: 85%;
+            background: linear-gradient(135deg, rgba(25, 26, 36, 0.95), rgba(15, 16, 26, 0.98));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        [data-theme="light"] .payment-modal-content {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(245, 245, 250, 0.98));
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .payment-container {
+            padding: 25px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .payment-modal-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1550684376-efcbd6e3f031?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            opacity: 0.05;
+            z-index: 0;
+        }
+        
+        .premium-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: linear-gradient(90deg, #007acc, #6b46c1);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            z-index: 3;
+        }
+        
+        /* Tab Navigation */
+        .payment-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+            padding: 0 10px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .tab-btn {
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            color: #a0aec0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            font-size: 14px;
+            margin: 0 5px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .tab-btn::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+        
+        .tab-btn:hover::after {
+            opacity: 1;
+        }
+        
+        [data-theme="light"] .tab-btn {
+            background: rgba(255, 255, 255, 0.7);
+            color: #4a5568;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .tab-btn.active {
+            background: linear-gradient(90deg, #007acc, #6b46c1);
+            color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(107, 70, 193, 0.4);
+            border-color: transparent;
+            position: relative;
+        }
+        
+        .tab-btn.active::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, rgba(0, 122, 204, 0.5), rgba(107, 70, 193, 0.5));
+            filter: blur(15px);
+            border-radius: 30px;
+            z-index: -1;
+        }
+        
+        .tab-content {
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* Credit Purchase Form */
+        #credit-form {
+            background: rgba(19, 20, 28, 0.95);
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: 500px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+        
+        #credits-tab h1, #subscription-tab h1 {
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            text-align: center;
+            background: linear-gradient(90deg, #007acc, #6b46c1);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 0.5px;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+        
+        #credits-tab h1::after, #subscription-tab h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, #007acc, #6b46c1);
+            border-radius: 3px;
+        }
+        
+        [data-theme="light"] #credit-form {
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+        }
+        
+        #credit-form::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            z-index: -1;
+        }
+        
+        #credit-form label, #subscription-form label {
+            display: block;
+            margin-bottom: 5px;
+            color: #a0aec0;
+            font-weight: 600;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        
+        [data-theme="light"] #credit-form label {
+            color: #4a5568;
+        }
+        
+        #credit-form input, #subscription-form input {
+            width: 100%;
+            padding: 12px 15px;
+            margin-bottom: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            background: rgba(30, 31, 44, 0.95);
+            color: white;
+            font-size: 14px;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1) inset;
+            backdrop-filter: blur(5px);
+            letter-spacing: 0.5px;
+        }
+        
+        #credit-form input::placeholder, #subscription-form input::placeholder {
+            color: rgba(255, 255, 255, 0.3);
+            font-style: italic;
+        }
+        
+        [data-theme="light"] #credit-form input {
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            color: #2d3748;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05) inset;
+        }
+        
+        #credit-form input:focus {
+            outline: none;
+            border-color: #007acc;
+            box-shadow: 0 0 0 3px rgba(0, 122, 204, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        .amount-options {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            justify-content: center;
+        }
+        
+        .amount-btn {
+            flex: 1;
+            padding: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            background: rgba(30, 31, 44, 0.95);
+            color: #a0aec0;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            font-weight: 700;
+            font-size: 18px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            backdrop-filter: blur(5px);
+        }
+        
+        [data-theme="light"] .amount-btn {
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            color: #4a5568;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        .amount-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, #007acc, #6b46c1);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+        
+        .amount-btn:hover {
+            color: white;
+            border-color: transparent;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .amount-btn:hover::before {
+            opacity: 1;
+        }
+        
+        .amount-btn.active {
+            background: linear-gradient(90deg, #007acc, #6b46c1);
+            color: white;
+            border-color: transparent;
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(107, 70, 193, 0.4);
+            position: relative;
+        }
+        
+        .amount-btn.active::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            background: linear-gradient(90deg, rgba(0, 122, 204, 0.5), rgba(107, 70, 193, 0.5));
+            filter: blur(15px);
+            border-radius: 15px;
+            z-index: -1;
+            opacity: 0.7;
+        }
+        
+        #credit-form button[type="submit"], #subscription-form button[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(90deg, #007acc, #6b46c1);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 14px;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            margin-top: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        #credit-form button[type="submit"]:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Subscription Plans */
+        .subscription-plans {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+            justify-content: center;
+        }
+        
+        .plan-card {
+            background: rgba(19, 20, 28, 0.95);
+            border-radius: 12px;
+            padding: 20px 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        [data-theme="light"] .plan-card {
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+        }
+        
+        .plan-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+        }
+        
+        .plan-card.featured {
+            background: linear-gradient(135deg, rgba(0, 122, 204, 0.2), rgba(107, 70, 193, 0.2));
+            border: 1px solid transparent;
+            border-image: linear-gradient(90deg, #007acc, #6b46c1);
+            border-image-slice: 1;
+            transform: scale(1.03);
+            z-index: 2;
+        }
+        
+        .featured-tag {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: linear-gradient(90deg, #007acc, #6b46c1);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 15px;
+            font-size: 8px;
+            font-weight: bold;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .plan-card h3 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 16px;
+            font-weight: 700;
+            text-align: center;
+            background: linear-gradient(90deg, #007acc, #6b46c1);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 0.5px;
+        }
+        
+        .plan-price {
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 12px;
+            color: #f0f4f8;
+            text-align: center;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+        
+        [data-theme="light"] .plan-price {
+            color: #2d3748;
+        }
+        
+        .plan-price span {
+            font-size: 16px;
+            font-weight: normal;
+            color: #a0aec0;
+            position: relative;
+            top: -10px;
+            margin-left: 5px;
+        }
+        
+        .plan-features {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 15px 0;
+            flex: 1;
+        }
+        
+        .plan-features li {
+            padding: 6px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            color: #a0aec0;
+            position: relative;
+            padding-left: 20px;
+            font-size: 11px;
+        }
+        
+        [data-theme="light"] .plan-features li {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            color: #4a5568;
+        }
+        
+        .plan-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #38b2ac;
+            font-weight: bold;
+            font-size: 12px;
+            background: linear-gradient(90deg, #007acc, #6b46c1);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        #credit-form button[type="submit"]::before, #subscription-form button[type="submit"]::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+            transition: left 0.7s ease;
+        }
+        
+        #credit-form button[type="submit"]:hover::before, #subscription-form button[type="submit"]:hover::before {
+            left: 100%;
+        }
+        
+        .select-plan-btn {
+            width: 100%;
+            padding: 8px;
+            background: linear-gradient(90deg, #007acc, #6b46c1);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 11px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            margin-top: auto;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .select-plan-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Subscription Form */
+        #subscription-form {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(19, 20, 28, 0.95);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: fadeIn 0.5s ease;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        [data-theme="light"] #subscription-form {
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+        }
+        
+        #subscription-form h2 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            text-align: center;
+            background: linear-gradient(90deg, #007acc, #6b46c1);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        #subscription-form p {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #a0aec0;
+        }
+        
+        #subscription-form label {
+            display: block;
+            margin-bottom: 5px;
+            color: #a0aec0;
+            font-weight: 600;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        
+        #subscription-form input {
+            width: 100%;
+            padding: 12px 15px;
+            margin-bottom: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            background: rgba(30, 31, 44, 0.95);
+            color: white;
+            font-size: 14px;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1) inset;
+        }
+        
+        #subscription-form button[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(90deg, #007acc, #6b46c1);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 14px;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            margin-top: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        #subscription-form button[type="submit"]:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Additional Payment Styles */
+        .amount-options {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            justify-content: center;
+        }
+        
+        .amount-btn {
+            flex: 1;
+            padding: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            background: rgba(30, 31, 44, 0.95);
+            color: #a0aec0;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            font-weight: 700;
+            font-size: 18px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            backdrop-filter: blur(5px);
+        }
+        
+        [data-theme="light"] .amount-btn {
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            color: #4a5568;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        .amount-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, #007acc, #6b46c1);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+        
+        .amount-btn:hover {
+            color: white;
+            border-color: transparent;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .amount-btn:hover::before {
+            opacity: 1;
+        }
+        
+        .amount-btn.active {
+            background: linear-gradient(90deg, #007acc, #6b46c1);
+            color: white;
+            border-color: transparent;
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(107, 70, 193, 0.4);
+            position: relative;
+        }
+        
+        .subscription-plans {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+            justify-content: center;
+        }
+        
+        .plan-card {
+            background: rgba(19, 20, 28, 0.95);
+            border-radius: 12px;
+            padding: 20px 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        [data-theme="light"] .plan-card {
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+        }
+        
+        .plan-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+        }
+        
+        .plan-card.featured {
+            background: linear-gradient(135deg, rgba(0, 122, 204, 0.2), rgba(107, 70, 193, 0.2));
+            border: 1px solid transparent;
+            border-image: linear-gradient(90deg, #007acc, #6b46c1);
+            border-image-slice: 1;
+            transform: scale(1.03);
+            z-index: 2;
+        }
+
+        /* IDE Styles */
+        #ide-section {
+            display: none;
+            height: 100vh;
+            flex-direction: column;
+            background: var(--bg-color);
+            color: var(--text-color);
+        }
+
+        .ide-header {
+            display: flex;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            background: var(--secondary-bg);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .ide-header .logo {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-right: 1rem;
+        }
+
+        .ide-header .actions {
+            display: flex;
+            gap: 0.5rem;
+            margin-left: auto;
+        }
+
+        .ide-header button {
+            background: none;
+            border: none;
+            color: var(--text-color);
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 4px;
+        }
+
+        .ide-header button:hover {
+            background: var(--hover-color);
+        }
+
+        .ide-main {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+        }
+
+        .sidebar {
+            width: 250px;
+            background: var(--secondary-bg);
+            border-right: 1px solid var(--border-color);
+            transition: width 0.3s ease;
+            overflow-y: auto;
+        }
+
+        .sidebar.collapsed {
+            width: 0;
+            padding: 0;
+        }
+
+        .file-explorer {
+            padding: 1rem;
+        }
+
+        .file-explorer h3 {
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .file-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .file {
+            display: flex;
+            align-items: center;
+            padding: 0.5rem;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .file:hover {
+            background: var(--hover-color);
+        }
+
+        .file.active {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .file i {
+            margin-right: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .editor-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .editor-tabs {
+            display: flex;
+            background: var(--secondary-bg);
+            border-bottom: 1px solid var(--border-color);
+            padding: 0.5rem;
+        }
+
+        .tab {
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            border-radius: 4px 4px 0 0;
+        }
+
+        .tab.active {
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-bottom: none;
+        }
+
+        .code-editor {
+            flex: 1;
+            display: flex;
+            overflow: hidden;
+        }
+
+        .line-numbers {
+            padding: 1rem;
+            background: var(--secondary-bg);
+            border-right: 1px solid var(--border-color);
+            text-align: right;
+            user-select: none;
+            overflow-y: auto;
+        }
+
+        .line-numbers span {
+            display: block;
+            color: var(--text-muted);
+        }
+
+        .code-editor pre {
+            flex: 1;
+            margin: 0;
+            padding: 1rem;
+            overflow: auto;
+        }
+
+        .code-editor code {
+            display: block;
+            white-space: pre;
+            font-family: 'Fira Code', monospace;
+        }
+
+        .ai-assistant-panel {
+            width: 300px;
+            background: var(--secondary-bg);
+            border-left: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            transition: width 0.3s ease;
+        }
+
+        .ai-assistant-panel.collapsed {
+            width: 0;
+            padding: 0;
+        }
+
+        .ai-panel-header {
+            padding: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .ai-panel-header h3 {
+            margin: 0;
+            font-size: 1rem;
+        }
+
+        .chat-area {
+            flex: 1;
+            padding: 1rem;
+            overflow-y: auto;
+        }
+
+        .chat-input {
+            padding: 1rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .chat-input input {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            background: var(--bg-color);
+            color: var(--text-color);
+        }
+
+        .ide-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            background: var(--secondary-bg);
+            border-top: 1px solid var(--border-color);
+        }
+
+        .status-bar {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .theme-toggle button {
+            background: none;
+            border: none;
+            color: var(--text-color);
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .theme-toggle button:hover {
+            background: var(--hover-color);
+            border-radius: 4px;
+        }
+
+        /* Dark theme specific styles */
+        .dark-theme {
+            --bg-color: #1e1e1e;
+            --secondary-bg: #252526;
+            --text-color: #d4d4d4;
+            --text-muted: #858585;
+            --border-color: #3c3c3c;
+            --hover-color: #2d2d2d;
+            --primary-color: #0e639c;
+        }
+
+        /* Light theme specific styles */
+        :root {
+            --bg-color: #ffffff;
+            --secondary-bg: #f3f3f3;
+            --text-color: #333333;
+            --text-muted: #666666;
+            --border-color: #e0e0e0;
+            --hover-color: #f0f0f0;
+            --primary-color: #0078d4;
+        }
+    </style>
+</head>
+<body class="premium">
+    <div class="landing-container">
+        <header class="landing-header premium-header">
+            <div class="logo premium-logo">CodeBox AI</div>
+            <nav class="landing-nav">
+                <ul>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#" class="btn-primary" id="get-started-btn">Get Started</a></li>
+                    <li><a href="#" class="btn-secondary" id="login-btn">Login</a></li>
+                    <li><a href="payment.html" class="btn-secondary" id="buy-credits-btn">Buy Credits</a></li>
+                    <li><a href="#" class="btn-secondary" id="airdrop-btn">Airdrop</a></li>
+                    <li><a href="#" class="btn-primary" id="launch-ide-btn">Launch IDE</a></li>
+                    <li>
+                        <button id="theme-toggle" class="theme-toggle">
+                            <svg id="light-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.03-.39-1.41 0-.39.39-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0 .39-.39.39-1.03 0-1.41L5.99 4.58zm12.37 12.37c-.39-.39-1.03-.39-1.41 0-.39.39-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0 .39-.39.39-1.03 0-1.41l-1.06-1.06zm1.06-10.96c.39-.39.39-1.03 0-1.41-.39-.39-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41.39.39 1.03.39 1.41 0l1.06-1.06zM7.05 18.36c.39-.39.39-1.03 0-1.41-.39-.39-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41.39.39 1.03.39 1.41 0l1.06-1.06z"/>
+                            </svg>
+                            <svg id="dark-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="display:none;">
+                                <path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"/>
+                            </svg>
+                            <span id="theme-text">Dark Mode</span>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <section class="hero premium-hero">
+            <div class="hero-content">
+                <h1>Elevate Your Coding Experience</h1>
+                <p>CodeBox AI is your intelligent coding companion powered by cutting-edge AI technology. Experience seamless code assistance, real-time suggestions, and advanced debugging capabilities in one powerful platform.</p>
+                <div class="cta-buttons">
+                    <a href="codebox-improved.html" class="btn-premium">Try It Now</a>
+                    <a href="#features" class="btn-premium-secondary">Explore Features</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="features premium-section">
+            <h2>Advanced Features</h2>
+            <div class="feature-grid">
+                <div class="feature-card premium-feature-card">
+                    <h3><i class="fas fa-robot"></i> Multiple AI Models</h3>
+                    <p>Access a variety of specialized AI models optimized for different programming languages and tasks. From GPT-4 for natural language understanding to Codex for code generation, choose the perfect AI assistant for your specific needs.</p>
+                </div>
+                <div class="feature-card premium-feature-card">
+                    <h3><i class="fas fa-code"></i> AI Code Completion</h3>
+                    <p>Experience intelligent code suggestions with context-aware completion that understands your project structure. Our AI analyzes your coding patterns to provide personalized recommendations that match your style.</p>
+                </div>
+                <div class="feature-card premium-feature-card">
+                    <h3><i class="fas fa-bug"></i> Advanced Bug Detection</h3>
+                    <p>Proactively identify potential bugs, security vulnerabilities, and performance issues before they impact your application. Our AI performs deep code analysis to catch problems that traditional linters miss.</p>
+                </div>
+                <div class="feature-card premium-feature-card">
+                    <h3><i class="fas fa-book"></i> Contextual Learning</h3>
+                    <p>Access intelligent documentation and learning resources tailored to your code. Get explanations, examples, and best practices directly within your coding environment without breaking your workflow.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="pricing" class="pricing premium-section">
+            <h2>Premium Pricing Plans</h2>
+            <div class="pricing-cards">
+                <div class="pricing-card premium-feature-card">
+                    <h3>Starter</h3>
+                    <div class="price">$30</div>
+                    <ul>
+                        <li>100 AI Credits</li>
+                        <li>Basic Code Completion</li>
+                        <li>Standard Response Time</li>
+                        <li>Access to GPT-3.5 Model</li>
+                        <li>Basic Security Features</li>
+                    </ul>
+                    <a href="#" class="btn-premium payment-btn" data-amount="30">Get Started</a>
+                </div>
+                <div class="pricing-card premium-feature-card featured">
+                    <h3>Professional</h3>
+                    <div class="price">$100</div>
+                    <ul>
+                        <li>500 AI Credits</li>
+                        <li>Advanced Code Completion</li>
+                        <li>Priority Response Time</li>
+                        <li>Access to Multiple AI Models</li>
+                        <li>Code Optimization Suggestions</li>
+                        <li>Enhanced Security Features</li>
+                        <li>Performance Analytics</li>
+                    </ul>
+                    <a href="#" class="btn-premium payment-btn" data-amount="100">Get Started</a>
+                </div>
+                <div class="pricing-card premium-feature-card">
+                    <h3>Enterprise</h3>
+                    <div class="price">$500</div>
+                    <ul>
+                        <li>3000 AI Credits</li>
+                        <li>Premium Code Completion</li>
+                        <li>Instant Response Time</li>
+                        <li>Full Access to All AI Models</li>
+                        <li>Advanced Debugging</li>
+                        <li>Team Collaboration Features</li>
+                        <li>Enterprise-grade Security</li>
+                        <li>Dedicated Support</li>
+                        <li>Custom Integration Options</li>
+                    </ul>
+                    <a href="#" class="btn-premium payment-btn" data-amount="500">Get Started</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about premium-section">
+            <h2>About CodeBox AI</h2>
+            <p>CodeBox AI was created by developers, for developers. Our mission is to make coding more efficient and enjoyable by leveraging the power of artificial intelligence. Our team of experts has trained our AI on millions of lines of code to ensure it provides the most accurate and helpful suggestions possible.</p>
+            <p>With our cutting-edge technology and commitment to continuous improvement, we're revolutionizing how developers interact with their code. Our platform combines multiple specialized AI models, each optimized for specific programming languages and tasks, to provide a comprehensive coding assistant that adapts to your unique needs.</p>
+            <p>We believe that AI should enhance human creativity, not replace it. That's why CodeBox AI is designed to be a collaborative partner that amplifies your skills and helps you achieve your coding goals faster and more efficiently.</p>
+        </section>
+
+        <footer class="landing-footer premium-footer">
+            <div class="footer-content">
+                <div class="footer-logo premium-logo">CodeBox AI</div>
+                <div class="footer-links">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="codebox-improved.html">IDE</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">Documentation</a></li>
+                        <li><a href="#">Support</a></li>
+                        <li><a href="#">Community</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2023 CodeBox AI. All rights reserved.
+            </div>
+        </footer>
+    </div>
+    
+    <!-- Login Modal -->
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="login-container">
+                <h2>Login to CodeBox AI</h2>
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <div class="form-group remember-forgot">
+                        <div>
+                            <input type="checkbox" id="remember" name="remember">
+                            <label for="remember">Remember me</label>
+                        </div>
+                        <a href="#" id="forgot-password-link" class="forgot-password">Forgot Password?</a>
+                    </div>
+                    <button type="submit" class="btn-primary login-btn">Login</button>
+                </form>
+                <div class="login-footer">
+                    <p>Don't have an account? <a href="#" id="signup-link">Sign up</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Signup Modal -->
+    <div id="signup-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="login-container">
+                <h2>Create an Account</h2>
+                <form id="signup-form">
+                    <div class="form-group">
+                        <label for="signup-name">Full Name</label>
+                        <input type="text" id="signup-name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-email">Email</label>
+                        <input type="email" id="signup-email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-password">Password</label>
+                        <input type="password" id="signup-password" name="password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirm-password">Confirm Password</label>
+                        <input type="password" id="confirm-password" name="confirm-password" required>
+                    </div>
+                    <button type="submit" class="btn-primary login-btn">Create Account</button>
+                </form>
+                <div class="login-footer">
+                    <p>Already have an account? <a href="#" id="login-link">Login</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Payment Modal -->
+    <div id="payment-modal" class="modal">
+        <div class="modal-content payment-modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="payment-container">
+                <div class="premium-badge">Premium</div>
+                <div class="payment-tabs">
+                    <button class="tab-btn active" data-tab="credits">Purchase Credits</button>
+                    <button class="tab-btn" data-tab="subscription">Subscribe Monthly</button>
+                </div>
+                
+                <div id="credits-tab" class="tab-content">
+                    <h1>Purchase Additional Credits</h1>
+                    <form id="credit-form">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+
+                        <div class="amount-options">
+                            <button type="button" class="amount-btn active" data-amount="30">$30</button>
+                            <button type="button" class="amount-btn" data-amount="100">$100</button>
+                            <button type="button" class="amount-btn" data-amount="500">$500</button>
+                        </div>
+
+                        <label for="credit-amount">Credit Amount:</label>
+                        <input type="number" id="credit-amount" name="credit-amount" value="30" required>
+
+                        <label for="card-number">Card Number:</label>
+                        <input type="text" id="card-number" name="card-number" placeholder="1234 5678 9012 3456" required>
+
+                        <label for="expiry">Expiry (MM/YY):</label>
+                        <input type="text" id="expiry" name="expiry" placeholder="MM/YY" required>
+
+                        <label for="cvc">CVC:</label>
+                        <input type="text" id="cvc" name="cvc" placeholder="123" required>
+
+                        <button type="submit">Purchase Credits</button>
+                    </form>
+                </div>
+                
+                <div id="subscription-tab" class="tab-content" style="display: none;">
+                    <h1>Subscribe to Premium Access</h1>
+                    
+                    <div class="subscription-plans">
+                        <div class="plan-card">
+                            <h3>Basic Plan</h3>
+                            <div class="plan-price">$9.99<span>/month</span></div>
+                            <ul class="plan-features">
+                                <li>Access to basic AI models</li>
+                                <li>10 AI queries per day</li>
+                                <li>Standard response time</li>
+                                <li>Email support</li>
+                            </ul>
+                            <button class="select-plan-btn" data-plan="basic">Select Plan</button>
+                        </div>
+                        
+                        <div class="plan-card featured">
+                            <div class="featured-tag">Most Popular</div>
+                            <h3>Pro Plan</h3>
+                            <div class="plan-price">$19.99<span>/month</span></div>
+                            <ul class="plan-features">
+                                <li>Access to all AI models</li>
+                                <li>Unlimited AI queries</li>
+                                <li>Priority response time</li>
+                                <li>24/7 support</li>
+                            </ul>
+                            <button class="select-plan-btn" data-plan="pro">Select Plan</button>
+                        </div>
+                        
+                        <div class="plan-card">
+                            <h3>Premium Plan</h3>
+                            <div class="plan-price">$29.99<span>/month</span></div>
+                            <ul class="plan-features">
+                                <li>Access to all AI models including GPT-4</li>
+                                <li>Unlimited AI queries with higher token limits</li>
+                                <li>Fastest response time</li>
+                                <li>Dedicated support team</li>
+                            </ul>
+                            <button class="select-plan-btn" data-plan="premium">Select Plan</button>
+                        </div>
+                    </div>
+                    
+                    <form id="subscription-form" style="display: none;">
+                        <h2>Complete Your Subscription</h2>
+                        <p>You've selected: <span id="plan-name">Basic Plan</span> at <span id="plan-price">$9.99/month</span></p>
+                        <input type="hidden" id="selected-plan" value="basic">
+                        
+                        <label for="sub-email">Email:</label>
+                        <input type="email" id="sub-email" name="sub-email" required>
+                        
+                        <label for="sub-card-number">Card Number:</label>
+                        <input type="text" id="sub-card-number" name="sub-card-number" placeholder="1234 5678 9012 3456" required>
+                        
+                        <label for="sub-expiry">Expiry (MM/YY):</label>
+                        <input type="text" id="sub-expiry" name="sub-expiry" placeholder="MM/YY" required>
+                        
+                        <label for="sub-cvc">CVC:</label>
+                        <input type="text" id="sub-cvc" name="sub-cvc" placeholder="123" required>
+                        
+                        <button type="submit">Start Subscription</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- IDE Section -->
+    <div id="ide-section" class="ide-container" style="display: none;">
+        <header class="ide-header">
+            <div class="ide-logo">
+                <i class="fas fa-code"></i>
+                <span>Code Editor</span>
+            </div>
+            <div class="ide-actions">
+                <button id="toggle-sidebar" class="btn-icon">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <button id="toggle-ai-panel" class="btn-icon">
+                    <i class="fas fa-robot"></i>
+                </button>
+            </div>
+        </header>
+
+        <main class="ide-main">
+            <aside class="sidebar">
+                <div class="file-explorer">
+                    <h3>
+                        <span>Files</span>
+                        <button class="btn-icon">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </h3>
+                    <div class="file-list">
+                        <div class="file active">
+                            <i class="fas fa-file-code"></i>
+                            <span>index.html</span>
+                        </div>
+                        <div class="file">
+                            <i class="fas fa-file-code"></i>
+                            <span>styles.css</span>
+                        </div>
+                        <div class="file">
+                            <i class="fas fa-file-code"></i>
+                            <span>script.js</span>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <div class="editor-container">
+                <div class="editor-tabs">
+                    <div class="tab active">
+                        <i class="fas fa-file-code"></i>
+                        <span>index.html</span>
+                        <button class="btn-icon">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="code-editor">
+                    <div class="line-numbers"></div>
+                    <pre><code class="language-html" contenteditable="true"><!DOCTYPE html>
+<html>
+<head>
+    <title>My Project</title>
+</head>
+<body>
+    <h1>Hello World!</h1>
+</body>
+</html></code></pre>
+                </div>
+            </div>
+
+            <div class="ai-assistant-panel">
+                <div class="ai-chat">
+                    <div class="ai-message">
+                        Hello! I'm your AI coding assistant. How can I help you today?
+                    </div>
+                </div>
+                <div class="ai-input">
+                    <textarea placeholder="Ask me anything about your code..."></textarea>
+                    <button>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+        </main>
+
+        <footer class="ide-footer">
+            <div class="status-bar">
+                <span>Ln 1, Col 1</span>
+                <span>Spaces: 4</span>
+                <span>UTF-8</span>
+            </div>
+            <div class="theme-toggle">
+                <button class="btn-icon">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </footer>
+    </div>
+    
+    <script src="script.js"></script>
+    <script>
+        // Login and Signup Modal Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Button elements
+            const loginBtn = document.getElementById('login-btn');
+            const getStartedBtn = document.getElementById('get-started-btn');
+            const buyCreditsBtn = document.getElementById('buy-credits-btn');
+            const airdropBtn = document.getElementById('airdrop-btn');
+            const launchIdeBtn = document.getElementById('launch-ide-btn');
+            
+            // Modal elements
+            const loginModal = document.getElementById('login-modal');
+            const signupModal = document.getElementById('signup-modal');
+            const paymentModal = document.getElementById('payment-modal');
+            const signupLink = document.getElementById('signup-link');
+            const loginLink = document.getElementById('login-link');
+            const forgotPasswordLink = document.getElementById('forgot-password-link');
+            const closeButtons = document.querySelectorAll('.close-modal');
+            const paymentButtons = document.querySelectorAll('.payment-btn');
+            
+            // Check URL parameters to see if we should open a specific modal
+            const urlParams = new URLSearchParams(window.location.search);
+            const action = urlParams.get('action');
+            
+            if (action === 'login') {
+                loginModal.style.display = 'flex';
+            } else if (action === 'signup') {
+                signupModal.style.display = 'flex';
+            }
+            
+            // Open login modal
+            loginBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                loginModal.style.display = 'flex';
+            });
+            
+            // Switch to signup modal
+            signupLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                loginModal.style.display = 'none';
+                signupModal.style.display = 'flex';
+            });
+            
+            // Switch to login modal
+            loginLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                signupModal.style.display = 'none';
+                loginModal.style.display = 'flex';
+            });
+            
+            // Close modals
+            closeButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    loginModal.style.display = 'none';
+                    signupModal.style.display = 'none';
+                    paymentModal.style.display = 'none';
+                });
+            });
+            
+            // Open payment modal when payment buttons are clicked
+            paymentButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const amount = this.getAttribute('data-amount');
+                    document.getElementById('credit-amount').value = amount;
+                    
+                    // Update the active amount button
+                    const amountButtons = document.querySelectorAll('.amount-btn');
+                    amountButtons.forEach(btn => {
+                        if (btn.getAttribute('data-amount') === amount) {
+                            btn.classList.add('active');
+                        } else {
+                            btn.classList.remove('active');
+                        }
+                    });
+                    
+                    // Make sure the credits tab is active
+                    const tabButtons = document.querySelectorAll('.tab-btn');
+                    tabButtons.forEach(btn => {
+                        if(btn.getAttribute('data-tab') === 'credits') {
+                            btn.classList.add('active');
+                        } else {
+                            btn.classList.remove('active');
+                        }
+                    });
+                    
+                    document.getElementById('credits-tab').style.display = 'block';
+                    document.getElementById('subscription-tab').style.display = 'none';
+                    
+                    paymentModal.style.display = 'flex';
+                });
+            });
+            
+            // Tab switching in payment modal
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            tabButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const tabName = this.getAttribute('data-tab');
+                    
+                    // Update active tab button
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Show selected tab content
+                    document.querySelectorAll('.tab-content').forEach(tab => {
+                        tab.style.display = 'none';
+                    });
+                    document.getElementById(tabName + '-tab').style.display = 'block';
+                });
+            });
+            
+            // Amount button selection
+            const amountButtons = document.querySelectorAll('.amount-btn');
+            amountButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Update active button
+                    amountButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Update amount input
+                    const amount = this.getAttribute('data-amount') || this.textContent.replace('$', '');
+                    document.getElementById('credit-amount').value = amount;
+                });
+            });
+            
+            // Select plan buttons
+            const selectPlanButtons = document.querySelectorAll('.select-plan-btn');
+            selectPlanButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const planName = this.closest('.plan-card').querySelector('h3').textContent;
+                    const planPrice = this.closest('.plan-card').querySelector('.plan-price').textContent;
+                    
+                    document.getElementById('plan-name').textContent = planName;
+                    document.getElementById('plan-price').textContent = planPrice;
+                    document.getElementById('selected-plan').value = this.getAttribute('data-plan');
+                    
+                    document.querySelector('.subscription-plans').style.display = 'none';
+                    document.getElementById('subscription-form').style.display = 'block';
+                });
+            });
+            
+            // Form submissions
+            document.getElementById('credit-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Thank you for your purchase! Credits have been added to your account.');
+                paymentModal.style.display = 'none';
+            });
+            
+            document.getElementById('subscription-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Thank you for subscribing! Your subscription is now active.');
+                paymentModal.style.display = 'none';
+            });
+            
+            // Close modal when clicking outside
+            window.addEventListener('click', function(e) {
+                if (e.target === loginModal) {
+                    loginModal.style.display = 'none';
+                }
+                if (e.target === signupModal) {
+                    signupModal.style.display = 'none';
+                }
+                if (e.target === paymentModal) {
+                    paymentModal.style.display = 'none';
+                }
+            });
+            
+            // Form submission (you can add your authentication logic here)
+            document.getElementById('login-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                // Add your login authentication logic here
+                console.log('Login submitted');
+                loginModal.style.display = 'none';
+                alert('Login successful!');
+            });
+            
+            document.getElementById('signup-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                // Add your signup logic here
+                console.log('Signup submitted');
+                signupModal.style.display = 'none';
+                alert('Account created successfully!');
+            });
+            
+            // Handle other navigation buttons
+            getStartedBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                signupModal.style.display = 'flex';
+            });
+            
+            buyCreditsBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                paymentModal.style.display = 'flex';
+            });
+            
+            airdropBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.location.href = 'unused_components/airdrop.html';
+            });
+            
+            launchIdeBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.location.href = 'unused_components/codebox-improved.html';
+            });
+            
+            forgotPasswordLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                loginModal.style.display = 'none';
+                alert('Password reset functionality will be implemented here');
+                // You can add password reset modal here in the future
+            });
+            
+            // Open payment modal directly when needed
+            const openPayment = urlParams.get('payment');
+            if (openPayment === 'true') {
+                paymentModal.style.display = 'flex';
+            }
+            
+            // Make the buy-credits button work
+            buyCreditsBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                paymentModal.style.display = 'flex';
+                
+                // Make sure the credits tab is active
+                tabButtons.forEach(btn => {
+                    if(btn.getAttribute('data-tab') === 'credits') {
+                        btn.classList.add('active');
+                    } else {
+                        btn.classList.remove('active');
+                    }
+                });
+                
+                document.getElementById('credits-tab').style.display = 'block';
+                document.getElementById('subscription-tab').style.display = 'none';
+            });
+        });
+
+        // IDE Functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            const ideSection = document.getElementById('ide-section');
+            const toggleSidebarBtn = document.getElementById('toggle-sidebar');
+            const toggleAiPanelBtn = document.getElementById('toggle-ai-panel');
+            const sidebar = document.querySelector('.sidebar');
+            const aiPanel = document.querySelector('.ai-assistant-panel');
+            const codeEditor = document.querySelector('.code-editor pre code');
+            const lineNumbers = document.querySelector('.line-numbers');
+            const themeToggleBtn = document.querySelector('.theme-toggle button');
+            const fileList = document.querySelector('.file-list');
+            const editorTabs = document.querySelector('.editor-tabs');
+
+            // Toggle sidebar
+            toggleSidebarBtn.addEventListener('click', () => {
+                sidebar.classList.toggle('collapsed');
+            });
+
+            // Toggle AI panel
+            toggleAiPanelBtn.addEventListener('click', () => {
+                aiPanel.classList.toggle('collapsed');
+            });
+
+            // Update line numbers
+            function updateLineNumbers() {
+                const lines = codeEditor.textContent.split('\n');
+                lineNumbers.innerHTML = lines.map((_, i) => `<span>${i + 1}</span>`).join('\n');
+            }
+
+            // Handle code editor input
+            codeEditor.addEventListener('input', () => {
+                updateLineNumbers();
+                // Add syntax highlighting here if needed
+            });
+
+            // File selection
+            fileList.addEventListener('click', (e) => {
+                const file = e.target.closest('.file');
+                if (file) {
+                    document.querySelectorAll('.file').forEach(f => f.classList.remove('active'));
+                    file.classList.add('active');
+                    
+                    // Update editor content based on selected file
+                    const fileName = file.querySelector('span').textContent;
+                    const fileType = fileName.split('.').pop();
+                    codeEditor.className = `language-${fileType}`;
+                    codeEditor.textContent = `// ${fileName} content here`;
+                    updateLineNumbers();
+                }
+            });
+
+            // Theme toggle
+            themeToggleBtn.addEventListener('click', () => {
+                document.body.classList.toggle('dark-theme');
+                const icon = themeToggleBtn.querySelector('i');
+                icon.classList.toggle('fa-moon');
+                icon.classList.toggle('fa-sun');
+            });
+
+            // Initialize line numbers
+            updateLineNumbers();
+        });
+    </script>
+    
+    <!-- CodeBox Improved JS -->
+    <script>
+    // OpenRouter AI integration
+    document.addEventListener('DOMContentLoaded', async () => {
+        // CodeBox application logic
+        const API_KEY = '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';
+        const DEFAULT_MODEL = 'deepseek/deepseek-chat-v3-0324';
+        
+        // Get DOM elements
+        const messageInput = document.querySelector('.input-box textarea');
+        const sendBtn = document.querySelector('.send-btn');
+        const attachBtn = document.querySelector('.attach-btn');
+        const fileInput = document.querySelector('.file-input');
+        
+        // Trigger file input when attach button is clicked
+        if (attachBtn && fileInput) {
+            attachBtn.addEventListener('click', () => {
+                fileInput.click();
+            });
+        }
+        
+        const chatMessages = document.querySelector('.chat-messages');
+        const welcomeSection = document.querySelector('.welcome-section');
+        const promptCards = document.querySelectorAll('.prompt-card');
+        const newChatBtn = document.querySelector('.new-chat-btn');
+        const chatList = document.querySelector('.chat-list');
+        const chatSearch = document.querySelector('.chat-search');
+        const tabButtons = document.querySelectorAll('.tab-btn');
+        
+        // Skip initialization if we're not on the IDE page yet
+        if (!chatMessages || !welcomeSection) return;
+        
+        // Chat history management
+        let chats = [];
+        let currentChatId = null;
+        let pinnedChats = [];
+        
+        // Initialize UI
+        function initUI() {
+            // Load chats from localStorage if available
+            const savedChats = localStorage.getItem('codebox_chats');
+            if (savedChats) {
+                chats = JSON.parse(savedChats);
+                updateChatHistory();
+            }
+            
+            // Set up event listeners
+            if (newChatBtn) {
+                newChatBtn.addEventListener('click', createNewChat);
+            }
+            
+            // Handle prompt card clicks
+            promptCards.forEach(card => {
+                card.addEventListener('click', () => {
+                    if (!currentChatId) createNewChat();
+                    const promptText = card.querySelector('h3').textContent;
+                    sendMessage(promptText);
+                });
+            });
+            
+            // Handle tab switching
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    // Additional tab functionality can be added here
+                });
+            });
+            
+            // Handle chat search
+            if (chatSearch) {
+                chatSearch.addEventListener('input', (e) => {
+                    const searchTerm = e.target.value.toLowerCase();
+                    const chatItems = chatList.querySelectorAll('.chat-item');
+                    
+                    chatItems.forEach(item => {
+                        const title = item.querySelector('.chat-title').textContent.toLowerCase();
+                        if (title.includes(searchTerm)) {
+                            item.style.display = 'flex';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            }
+        }
+        
+        // Create a new chat
+        function createNewChat() {
+            const newChat = {
+                id: Date.now(),
+                title: 'New Chat',
+                messages: [],
+                createdAt: new Date()
+            };
+            
+            chats.unshift(newChat); // Add to beginning of array
+            currentChatId = newChat.id;
+            
+            // Clear and hide welcome section
+            welcomeSection.style.display = 'none';
+            chatMessages.style.display = 'block';
+            chatMessages.innerHTML = '';
+            
+            // Add prompt cards at the top of every chat
+            const promptCardsHTML = `
+                <div class="welcome-header">
+                    <h1>CodeBox AI</h1>
+                    <h2>How can I assist you today?</h2>
+                </div>
+                <div class="prompt-suggestions">
+                    <div class="prompt-card">
+                        <div class="prompt-icon"><i class="fas fa-chart-bar"></i></div>
+                        <div class="prompt-content">
+                            <h3>Analyze data</h3>
+                            <p>Upload a file and ask questions about its contents</p>
+                        </div>
+                    </div>
+                    <div class="prompt-card">
+                        <div class="prompt-icon"><i class="fas fa-file-alt"></i></div>
+                        <div class="prompt-content">
+                            <h3>Summarize text</h3>
+                            <p>Condense long articles, papers or documents</p>
+                        </div>
+                    </div>
+                    <div class="prompt-card">
+                        <div class="prompt-icon"><i class="fas fa-code"></i></div>
+                        <div class="prompt-content">
+                            <h3>Code</h3>
+                            <p>Explain, debug, or write code in any language</p>
+                        </div>
+                    </div>
+                    <div class="prompt-card">
+                        <div class="prompt-icon"><i class="fas fa-tasks"></i></div>
+                        <div class="prompt-content">
+                            <h3>Make a plan</h3>
+                            <p>For workouts, meals, travel, or learning</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+            chatMessages.innerHTML = promptCardsHTML;
+            
+            updateChatHistory();
+            saveChats();
+        }
+        
+        // Update chat history in sidebar
+        function updateChatHistory() {
+            if (!chatList) return;
+            
+            chatList.innerHTML = '';
+            
+            chats.forEach(chat => {
+                const chatItem = document.createElement('div');
+                const isPinned = pinnedChats.includes(chat.id);
+                
+                chatItem.className = `chat-item ${chat.id === currentChatId ? 'active' : ''}`;
+                chatItem.innerHTML = `
+                    <div class="chat-item-content">
+                        <div class="chat-icon">
+                            <i class="fas fa-comment"></i>
+                        </div>
+                        <div class="chat-details">
+                            <span class="chat-title">${chat.title}</span>
+                            <span class="chat-time">${formatDate(chat.createdAt)}</span>
+                        </div>
+                    </div>
+                    <div class="chat-actions">
+                        <button class="pin-btn" title="${isPinned ? 'Unpin' : 'Pin'} chat">
+                            <i class="fas ${isPinned ? 'fa-thumbtack' : 'fa-thumbtack'}"></i>
+                        </button>
+                        <button class="delete-btn" title="Delete chat">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                `;
+                
+                // Add event listeners
+                chatItem.querySelector('.chat-item-content').addEventListener('click', () => {
+                    switchToChat(chat.id);
+                });
+                
+                chatItem.querySelector('.pin-btn').addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    togglePinChat(chat.id);
+                });
+                
+                chatItem.querySelector('.delete-btn').addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    deleteChat(chat.id);
+                });
+                
+                chatList.appendChild(chatItem);
+            });
+        }
+        
+        // Format date for chat history
+        function formatDate(date) {
+            const d = new Date(date);
+            const now = new Date();
+            const yesterday = new Date(now);
+            yesterday.setDate(yesterday.getDate() - 1);
+            
+            if (d.toDateString() === now.toDateString()) {
+                return d.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+            } else if (d.toDateString() === yesterday.toDateString()) {
+                return 'Yesterday';
+            } else {
+                return d.toLocaleDateString();
+            }
+        }
+        
+        // Toggle pin/unpin chat
+        function togglePinChat(chatId) {
+            const index = pinnedChats.indexOf(chatId);
+            if (index === -1) {
+                pinnedChats.push(chatId);
+            } else {
+                pinnedChats.splice(index, 1);
+            }
+            updateChatHistory();
+            saveChats();
+        }
+        
+        // Delete chat
+        function deleteChat(chatId) {
+            const index = chats.findIndex(c => c.id === chatId);
+            if (index !== -1) {
+                chats.splice(index, 1);
+                
+                // If we deleted the current chat
+                if (currentChatId === chatId) {
+                    if (chats.length > 0) {
+                        switchToChat(chats[0].id);
+                    } else {
+                        currentChatId = null;
+                        welcomeSection.style.display = 'block';
+                        chatMessages.style.display = 'none';
+                    }
+                }
+                
+                updateChatHistory();
+                saveChats();
+            }
+        }
+        
+        // Switch to a specific chat
+        function switchToChat(chatId) {
+            currentChatId = chatId;
+            const chat = chats.find(c => c.id === chatId);
+            
+            welcomeSection.style.display = 'none';
+            chatMessages.style.display = 'block';
+            chatMessages.innerHTML = '';
+            
+            // Add prompt cards at the top of every chat
+            const promptCardsHTML = `
+                <div class="welcome-header">
+                    <h1>CodeBox AI</h1>
+                    <h2>How can I assist you today?</h2>
+                </div>
+                <div class="prompt-suggestions">
+                    <div class="prompt-card">
+                        <div class="prompt-icon"><i class="fas fa-chart-bar"></i></div>
+                        <div class="prompt-content">
+                            <h3>Analyze data</h3>
+                            <p>Upload a file and ask questions about its contents</p>
+                        </div>
+                    </div>
+                    <div class="prompt-card">
+                        <div class="prompt-icon"><i class="fas fa-file-alt"></i></div>
+                        <div class="prompt-content">
+                            <h3>Summarize text</h3>
+                            <p>Condense long articles, papers or documents</p>
+                        </div>
+                    </div>
+                    <div class="prompt-card">
+                        <div class="prompt-icon"><i class="fas fa-code"></i></div>
+                        <div class="prompt-content">
+                            <h3>Code</h3>
+                            <p>Explain, debug, or write code in any language</p>
+                        </div>
+                    </div>
+                    <div class="prompt-card">
+                        <div class="prompt-icon"><i class="fas fa-tasks"></i></div>
+                        <div class="prompt-content">
+                            <h3>Make a plan</h3>
+                            <p>For workouts, meals, travel, or learning</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+            chatMessages.innerHTML = promptCardsHTML;
+            
+            // Display all messages for this chat
+            chat.messages.forEach(msg => {
+                addMessage(msg.role, msg.content);
+            });
+            
+            updateChatHistory();
+        }
+        
+        // Save chats to localStorage
+        function saveChats() {
+            localStorage.setItem('codebox_chats', JSON.stringify(chats));
+        }
+        
+        // Handle sending a message
+        function sendMessage(text) {
+            if (!messageInput) return;
+            
+            const prompt = text || messageInput.value.trim();
+            if (!prompt) return;
+            
+            // Add user message
+            addMessage('user', prompt, true);
+            messageInput.value = '';
+            messageInput.disabled = true;
+            if (sendBtn) sendBtn.disabled = true;
+            
+            // Add thinking indicator
+            const thinkingMsg = addMessage('assistant', '<div class="thinking"><span></span><span></span><span></span></div>', true);
+            
+            // Send to API
+            sendAIQuery(prompt, thinkingMsg);
+        }
+        
+        // Add a message to the chat
+        function addMessage(role, content, saveToHistory = false) {
+            if (!chatMessages) return;
+            
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${role}`;
+            
+            const avatar = document.createElement('div');
+            avatar.className = 'avatar';
+            if (role === 'user') {
+                avatar.innerHTML = '<i class="fas fa-user"></i>';
+            } else {
+                avatar.innerHTML = '<i class="fas fa-robot"></i>';
+            }
+            
+            const contentDiv = document.createElement('div');
+            contentDiv.className = 'message-content';
+            contentDiv.innerHTML = `<div>${content}</div>`;
+            
+            const timestamp = document.createElement('div');
+            timestamp.className = 'message-timestamp';
+            timestamp.textContent = new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+            
+            messageDiv.appendChild(avatar);
+            messageDiv.appendChild(contentDiv);
+            messageDiv.appendChild(timestamp);
+            
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+            
+            // Save to chat history if needed
+            if (saveToHistory && currentChatId) {
+                const chat = chats.find(c => c.id === currentChatId);
+                if (chat) {
+                    chat.messages.push({ role, content, timestamp: new Date() });
+                    
+                    // Update chat title if it's the first user message
+                    if (chat.messages.length === 1 && role === 'user') {
+                        chat.title = content.length > 30 ? content.substring(0, 30) + '...' : content;
+                        updateChatHistory();
+                    }
+                    
+                    saveChats();
+                }
+            }
+            
+            return messageDiv;
+        }
+        
+        // Send query to OpenRouter API
+        async function sendAIQuery(prompt, thinkingMsg) {
+            try {
+                const modelSelect = document.getElementById('ai-model');
+                const model = modelSelect ? modelSelect.value : DEFAULT_MODEL;
+                
+                const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${API_KEY}`,
+                        'Content-Type': 'application/json',
+                        'HTTP-Referer': window.location.href,
+                        'X-Title': 'CodeBox'
+                    },
+                    body: JSON.stringify({
+                        model: model,
+                        messages: [{
+                            role: 'user',
+                            content: prompt
+                        }]
+                    })
+                });
+
+                const data = await response.json();
+                if (!response.ok) throw new Error(data.error?.message || 'API request failed');
+                
+                // Update with actual response
+                const aiResponse = data.choices[0]?.message?.content || 'No response content';
+                thinkingMsg.querySelector('.message-content div').innerHTML = formatMessage(aiResponse);
+                
+                // Save AI response to history
+                if (currentChatId) {
+                    const chat = chats.find(c => c.id === currentChatId);
+                    if (chat) {
+                        chat.messages.push({ 
+                            role: 'assistant', 
+                            content: aiResponse,
+                            timestamp: new Date() 
+                        });
+                        saveChats();
+                    }
+                }
+            } catch (error) {
+                thinkingMsg.querySelector('.message-content div').textContent = `Error: ${error.message}`;
+            } finally {
+                if (messageInput) messageInput.disabled = false;
+                if (sendBtn) sendBtn.disabled = false;
+                if (messageInput) messageInput.focus();
+            }
+        }
+        
+        // Format message with markdown-like syntax
+        function formatMessage(text) {
+            // This is a simple implementation - could be expanded with a proper markdown parser
+            return text
+                .replace(/```([\s\S]*?)```/g, '<pre><code>$1</code></pre>')
+                .replace(/`([^`]+)`/g, '<code>$1</code>')
+                .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+                .replace(/\*([^*]+)\*/g, '<em>$1</em>')
+                .replace(/\n/g, '<br>');
+        }
+        
+        // Handle send button and Enter key
+        if (sendBtn) {
+            sendBtn.addEventListener('click', () => sendMessage());
+        }
+        
+        if (messageInput) {
+            messageInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter' && !e.shiftKey) {
+                    e.preventDefault();
+                    sendMessage();
+                }
+            });
+            
+            // Create a new chat when user starts typing if no chat exists
+            messageInput.addEventListener('input', () => {
+                if (!currentChatId && messageInput.value.trim().length > 0) {
+                    createNewChat();
+                }
+            });
+        }
+        
+        // Initialize the UI
+        initUI();
+    });
+    </script>
+</body>
+</html>

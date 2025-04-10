@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 50" width="200" height="50">
+  <defs>
+    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#007acc" />
+      <stop offset="50%" stop-color="#6b46c1" />
+      <stop offset="100%" stop-color="#d53f8c" />
+    </linearGradient>
+  </defs>
+  <text x="0" y="35" font-family="'Segoe UI', sans-serif" font-size="32" font-weight="bold" fill="url(#gradient)">CodeBox AI</text>
+</svg>

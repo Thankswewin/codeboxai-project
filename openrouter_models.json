@@ -1,0 +1,130 @@
+{
+  "free_models": [
+    {
+      "id": "allenai/molmo-7b-d:free",
+      "name": "Molmo 7B D",
+      "description": "Molmo is a family of open vision-language models developed by the Allen Institute for AI. Molmo models are trained on PixMo, a dataset of 1 million, highly-curated image-text pairs. It has state-of-the-art performance among multimodal models with a similar size while being fully open-source.",
+      "context": "4K"
+    },
+    {
+      "id": "bytedance-research/ui-tars-72b:free",
+      "name": "UI-TARS 72B",
+      "description": "UI-TARS 72B is an open-source multimodal AI model designed specifically for automating browser and desktop tasks through visual interaction and control. The model supports automation tasks within web browsers as well as desktop applications, including Microsoft Office and VS Code.",
+      "context": "33K"
+    },
+    {
+      "id": "qwen/qwen2.5-vl-3b-instruct:free",
+      "name": "Qwen2.5 VL 3B Instruct",
+      "description": "Qwen2.5 VL 3B is a multimodal LLM from the Qwen Team with state-of-the-art performance on visual understanding benchmarks, including MathVista, DocVQA, RealWorldQA, MTVQA, etc. It supports multilingual text understanding in images.",
+      "context": "64K"
+    },
+    {
+      "id": "google/gemini-2.5-pro-exp-03-25:free",
+      "name": "Gemini Pro 2.5 Experimental",
+      "description": "Gemini 2.5 Pro is Google's state-of-the-art AI model designed for advanced reasoning, coding, mathematics, and scientific tasks. It employs 'thinking' capabilities, enabling it to reason through responses with enhanced accuracy and nuanced context handling.",
+      "context": "1M"
+    },
+    {
+      "id": "qwen/qwen2.5-vl-32b-instruct:free",
+      "name": "Qwen2.5 VL 32B Instruct",
+      "description": "Qwen2.5-VL-32B is a multimodal vision-language model fine-tuned through reinforcement learning for enhanced mathematical reasoning, structured outputs, and visual problem-solving capabilities. It excels at visual analysis tasks, including object recognition and textual interpretation within images.",
+      "context": "8K"
+    },
+    {
+      "id": "deepseek/deepseek-chat-v3-0324:free",
+      "name": "DeepSeek V3 0324",
+      "description": "DeepSeek V3, a 685B-parameter, mixture-of-experts model, is the latest iteration of the flagship chat model family from the DeepSeek team. It succeeds the DeepSeek V3 model and performs really well on a variety of tasks.",
+      "context": "131K"
+    },
+    {
+      "id": "featherless/qwerky-72b:free",
+      "name": "Qwerky 72B",
+      "description": "Qwerky-72B is a linear-attention RWKV variant of the Qwen 2.5 72B model, optimized to significantly reduce computational cost at scale while retaining competitive accuracy on common benchmarks.",
+      "context": "33K"
+    },
+    {
+      "id": "mistralai/mistral-small-3.1-24b-instruct:free",
+      "name": "Mistral Small 3.1 24B",
+      "description": "Mistral Small 3.1 24B Instruct is an upgraded variant featuring 24 billion parameters with advanced multimodal capabilities. It provides state-of-the-art performance in text-based reasoning and vision tasks, including image analysis, programming, and mathematical reasoning.",
+      "context": "96K"
+    },
+    {
+      "id": "open-r1/olympiccoder-7b:free",
+      "name": "OlympicCoder 7B",
+      "description": "OlympicCoder-7B is an open-source language model fine-tuned on the CodeForces-CoTs dataset, consisting of nearly 100,000 high-quality chain-of-thought examples from competitive programming contexts.",
+      "context": "33K"
+    },
+    {
+      "id": "open-r1/olympiccoder-32b:free",
+      "name": "OlympicCoder 32B",
+      "description": "OlympicCoder-32B is a high-performing open-source model fine-tuned using the CodeForces-CoTs dataset, containing approximately 100,000 chain-of-thought programming samples. It excels at complex competitive programming benchmarks.",
+      "context": "33K"
+    },
+    {
+      "id": "google/gemma-3-1b-it:free",
+      "name": "Gemma 3 1B",
+      "description": "Gemma 3 1B is the smallest of the new Gemma 3 family. It handles context windows up to 32k tokens, understands over 140 languages, and offers improved math, reasoning, and chat capabilities, including structured outputs and function calling.",
+      "context": "33K"
+    },
+    {
+      "id": "google/gemma-3-4b-it:free",
+      "name": "Gemma 3 4B",
+      "description": "Gemma 3 introduces multimodality, supporting vision-language input and text outputs. It handles context windows up to 128k tokens, understands over 140 languages, and offers improved math, reasoning, and chat capabilities.",
+      "context": "131K"
+    },
+    {
+      "id": "google/gemma-3-12b-it:free",
+      "name": "Gemma 3 12B",
+      "description": "Gemma 3 introduces multimodality, supporting vision-language input and text outputs. It handles context windows up to 128k tokens, understands over 140 languages, and offers improved math, reasoning, and chat capabilities.",
+      "context": "131K"
+    },
+    {
+      "id": "rekaai/reka-flash-3:free",
+      "name": "Reka Flash 3",
+      "description": "Reka Flash 3 is a general-purpose, instruction-tuned large language model with 21 billion parameters, developed by Reka. It excels at general chat, coding tasks, instruction-following, and function calling.",
+      "context": "33K"
+    },
+    {
+      "id": "google/gemma-3-27b-it:free",
+      "name": "Gemma 3 27B",
+      "description": "Gemma 3 introduces multimodality, supporting vision-language input and text outputs. It handles context windows up to 128k tokens, understands over 140 languages, and offers improved math, reasoning, and chat capabilities.",
+      "context": "96K"
+    },
+    {
+      "id": "deepseek/deepseek-r1-zero:free",
+      "name": "DeepSeek R1 Zero",
+      "description": "DeepSeek-R1-Zero is a model trained via large-scale reinforcement learning (RL) without supervised fine-tuning (SFT) as a preliminary step. It's 671B parameters in size, with 37B active in an inference pass. It demonstrates remarkable performance on reasoning.",
+      "context": "164K"
+    },
+    {
+      "id": "qwen/qwq-32b:free",
+      "name": "QwQ 32B",
+      "description": "QwQ is the reasoning model of the Qwen series. Compared with conventional instruction-tuned models, QwQ, which is capable of thinking and reasoning, can achieve significantly enhanced performance in downstream tasks, especially hard problems.",
+      "context": "40K"
+    },
+    {
+      "id": "moonshotai/moonlight-16b-a3b-instruct:free",
+      "name": "Moonlight 16B A3B Instruct",
+      "description": "Moonlight-16B-A3B-Instruct is a 16B-parameter Mixture-of-Experts (MoE) language model developed by Moonshot AI. It is optimized for instruction-following tasks with 3B activated parameters per inference.",
+      "context": "8K"
+    },
+    {
+      "id": "nousresearch/deephermes-3-llama-3-8b-preview:free",
+      "name": "DeepHermes 3 Llama 3 8B Preview",
+      "description": "DeepHermes 3 Preview is the latest version of our flagship Hermes series of LLMs by Nous Research, and one of the first models in the world to unify Reasoning (long chains of thought that improve answer accuracy) and normal LLM response modes into one model.",
+      "context": "131K"
+    },
+    {
+      "id": "cognitivecomputations/dolphin3.0-r1-mistral-24b:free",
+      "name": "Dolphin3.0 R1 Mistral 24B",
+      "description": "Dolphin 3.0 R1 is the next generation of the Dolphin series of instruct-tuned models. Designed to be the ultimate general purpose local model, enabling coding, math, agentic, function calling, and general use cases.",
+      "context": "33K"
+    },
+    {
+      "id": "cognitivecomputations/dolphin3.0-mistral-24b:free",
+      "name": "Dolphin3.0 Mistral 24B",
+      "description": "Dolphin 3.0 is the next generation of the Dolphin series of instruct-tuned models. Designed to be the ultimate general purpose local model, enabling coding, math, agentic, function calling, and general use cases.",
+      "context": "33K"
+    }
+  ]
+}
